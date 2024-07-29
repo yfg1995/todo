@@ -5,6 +5,7 @@ export class TaskList {
   constructor({ wrapSelector }) {
     this.wrapSelector = wrapSelector;
     this.wrap = document.querySelector(wrapSelector);
+    this.tasks = [];
     this.init();
   }
 
@@ -14,10 +15,14 @@ export class TaskList {
 
   handleOnAdd() {
     this.button.addEventListener("click", () => {
-      new Task({
-        inputNewValue: this.inputNewValue,
-        wrapSelector: ".list",
-      });
+      this.tasks.push(
+        new Task({
+          inputNewValue: this.inputNewValue,
+          wrapSelector: ".list",
+        })
+      );
+
+      console.log({ tasks: this.tasks });
     });
   }
 
@@ -26,7 +31,7 @@ export class TaskList {
     this.input = createHTMLElement("input", { className: "input" });
     this.button = createHTMLElement("button", {
       className: "add-button",
-      textContent: "Add to list",
+      textContent: "Add to List",
     });
     this.list = createHTMLElement("ul", { className: "list" });
 
