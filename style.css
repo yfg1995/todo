@@ -63,6 +63,7 @@ button {
   border-color: var(--primary-clr);
   outline: none;
   background: transparent;
+  font-weight: bold;
 }
 
 .add-button {
@@ -70,7 +71,7 @@ button {
   padding: 0 20px;
   font-size: var(--font-size);
   border-radius: var(--bdrs);
-  font-weight: 600;
+  font-weight: bold;
 }
 
 .add-button:hover {
@@ -86,7 +87,6 @@ button {
 .task {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   font-size: var(--font-size);
   padding: 10px 20px;
   background: teal;
@@ -111,6 +111,8 @@ button {
 .edit-button {
   padding: 5px 10px;
   font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 .delete-button {
