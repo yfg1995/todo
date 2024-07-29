@@ -63,7 +63,6 @@ button {
   border-color: var(--primary-clr);
   outline: none;
   background: transparent;
-  font-weight: bold;
 }
 
 .add-button {
@@ -82,6 +81,7 @@ button {
   padding: 0;
   list-style-type: none;
   transition: all 0.5s linear;
+  overflow-y: auto;
 }
 
 .task {
@@ -93,6 +93,8 @@ button {
   transition: all 0.5s linear;
   border-top-left-radius: var(--bdrs);
   border-bottom-left-radius: var(--bdrs);
+  font-weight: bold;
+  margin: 15px 0;
 }
 
 .task-buttons-con {
