@@ -21,8 +21,6 @@ export class TaskList {
           wrapSelector: ".list",
         })
       );
-
-      console.log({ tasks: this.tasks });
     });
   }
 
