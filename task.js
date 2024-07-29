@@ -1,10 +1,19 @@
 import { createHTMLElement } from "./helpers";
 
 export class Task {
-  constructor({ inputNewValue, wrapSelector }) {
-    this.wrapSelector = document.querySelector(wrapSelector);
+  constructor({ inputNewValue, wrapSelector, data, id }) {
+    this.wrap = document.querySelector(wrapSelector);
     this.inputNewValue = inputNewValue;
-    this.createTaskHTML();
+    this.data = data;
+    this.id = id;
+    this.init();
+  }
+
+  removeTask() {
+    this.deleteButton.addEventListener("click", () => {
+      this.data.deleteTask(this.id);
+      this.task.remove();
+    });
   }
 
   createTaskHTML() {
@@ -28,8 +37,13 @@ export class Task {
       textContent: "X",
     });
 
-    this.wrapSelector.appendChild(this.task);
-    this.task.append(this.taskText, this.taskButtonsCon);
     this.taskButtonsCon.append(this.editButton, this.deleteButton);
+    this.task.append(this.taskText, this.taskButtonsCon);
+    this.wrap.appendChild(this.task);
+  }
+
+  init() {
+    this.createTaskHTML();
+    this.removeTask();
   }
 }

@@ -40,6 +40,7 @@ button {
 .taskList {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 50px;
 }
 
@@ -82,6 +83,7 @@ button {
   list-style-type: none;
   transition: all 0.5s linear;
   overflow-y: auto;
+  width: 100%;
 }
 
 .task {
