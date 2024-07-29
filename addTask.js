@@ -1,34 +1,38 @@
-import { Data } from "./data";
 import { createHTMLElement } from "./helpers";
 import { Task } from "./task";
 
 export class AddTask {
-  constructor({ wrapSelector }) {
+  constructor({ wrapSelector, data }) {
     this.wrap = document.querySelector(wrapSelector);
     this.wrapSelector = wrapSelector;
-    this.data = new Data();
+    this.data = data;
     this.init();
   }
 
-  handleInputChange(e) {
-    this.inputNewValue = e.target.value;
-  }
+  // handleInputChange(e) {
+  //   this.inputNewValue = e.target.value;
+  // }
 
   handleOnAdd() {
     this.button.addEventListener("click", () => {
-      this.id = Date.now().toString();
-      this.data.addTask({
-        id: this.id,
-        task: new Task({
-          inputNewValue: this.inputNewValue,
+      if (this.input.value !== "") {
+        this.id = Date.now().toString();
+        const taskData = {
+          id: this.id,
+          inputNewValue: this.input.value,
+        };
+
+        this.data.addTask(taskData);
+
+        new Task({
+          inputNewValue: this.input.value,
           wrapSelector: ".list",
           data: this.data,
           id: this.id,
-        }),
-      });
+        });
 
-      this.input.value = "";
-      this.inputNewValue = "";
+        this.input.value = "";
+      }
     });
   }
 
@@ -40,9 +44,10 @@ export class AddTask {
       textContent: "Add to List",
     });
 
+    // this.input.addEventListener("change", (e) => this.handleInputChange(e));
+
     this.container.append(this.input, this.button);
     this.wrap.appendChild(this.container);
-    this.input.addEventListener("change", (e) => this.handleInputChange(e));
   }
 
   init() {
