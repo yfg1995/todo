@@ -1,4 +1,3 @@
-import { Data } from "./data";
 import { Task } from "./task";
 import { createHTMLElement } from "./helpers";
 

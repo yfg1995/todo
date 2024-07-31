@@ -1,4 +1,3 @@
-import { Data } from "./data";
 import { createHTMLElement } from "./helpers";
 
 export class Task {
