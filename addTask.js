@@ -27,7 +27,7 @@ export class AddTask {
         this.input.value = "";
 
         if (this.onTaskAdded) {
-          this.onTaskAdded(taskData);
+          this.onTaskAdded();
         }
       }
     });
