@@ -8,6 +8,14 @@ export class Data {
     this.saveTasksToStorage();
   }
 
+  editTask({ id, value }) {
+    const taskIndexValue = this.tasksList.findIndex((task) => task.id === id);
+    if (taskIndexValue !== -1) {
+      this.tasksList[taskIndexValue] = { id, value };
+      this.saveTasksToStorage();
+    }
+  }
+
   deleteTask(id) {
     this.tasksList = this.tasksList.filter((task) => task.id !== id);
     this.saveTasksToStorage();

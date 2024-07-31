@@ -10,7 +10,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --primary-clr: teal;
+  --clr-primary: teal;
   --bdrs: 10px;
   --font-size: 22px;
 }
@@ -37,6 +37,14 @@ button {
   cursor: pointer;
 }
 
+input {
+  border-width: 0 0 2px 0;
+  border-style: solid;
+  outline: none;
+  background: transparent;
+  font-size: var(--font-size);
+}
+
 .taskList {
   display: flex;
   flex-direction: column;
@@ -53,17 +61,12 @@ button {
   height: 50px;
 }
 
-.input {
+.add-task-input {
   display: flex;
   width: 400px;
   padding: 0 10px;
   height: 100%;
-  font-size: var(--font-size);
-  border-width: 0 0 2px 0;
-  border-style: solid;
-  border-color: var(--primary-clr);
-  outline: none;
-  background: transparent;
+  border-color: var(--clr-primary);
 }
 
 .add-button {
@@ -88,13 +91,19 @@ button {
 .task {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   font-size: var(--font-size);
   padding: 10px 20px;
   background: teal;
   border-top-left-radius: var(--bdrs);
   border-bottom-left-radius: var(--bdrs);
-  font-weight: bold;
   margin: 15px 0;
+}
+
+.task-edit-input {
+  width: 70%;
+  border: none;
+  padding: 0;
 }
 
 .task-buttons-con {
@@ -110,7 +119,7 @@ button {
   transition: all 0.2s ease-in-out;
 }
 
-.edit-button {
+.edit-buttons {
   padding: 5px 10px;
   font-size: 16px;
   font-weight: bold;

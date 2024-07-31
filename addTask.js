@@ -23,7 +23,6 @@ export class AddTask {
 
         this.data.addTask(taskData);
 
-        this.inputNewValue = "";
         this.input.value = "";
 
         if (this.onTaskAdded) {
@@ -35,10 +34,12 @@ export class AddTask {
 
   createHTML() {
     this.container = createHTMLElement("div", { className: "add-header" });
+
     this.input = createHTMLElement("input", {
-      className: "input",
-      id: "input",
+      className: "add-task-input",
+      id: "add-input",
     });
+
     this.button = createHTMLElement("button", {
       className: "add-button",
       textContent: "Add to List",
