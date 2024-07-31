@@ -20,8 +20,11 @@ export class Task {
   editTask() {
     this.saveButton.addEventListener("click", () => {
       const newValue = this.taskEditInput.value;
+
       this.data.editTask({ id: this.id, value: newValue });
+
       this.inputNewValue = newValue;
+
       this.toggleEdit();
     });
   }
@@ -79,6 +82,9 @@ export class Task {
       this.task.append(this.taskText, this.taskButtonsCon);
     }
 
+    this.editButton.addEventListener("click", () => this.toggleEdit());
+    this.cancelButton.addEventListener("click", () => this.toggleEdit());
+
     this.wrap.appendChild(this.task);
   }
 
@@ -86,7 +92,5 @@ export class Task {
     this.createTaskHTML();
     this.removeTask();
     this.editTask();
-    this.editButton.addEventListener("click", () => this.toggleEdit());
-    this.cancelButton.addEventListener("click", () => this.toggleEdit());
   }
 }
