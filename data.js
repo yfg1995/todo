@@ -1,11 +1,11 @@
 export class Data {
   constructor() {
-    this.tasksList = this.getTasksFromStorage() || [];
+    this.tasksList = this.getTasksFromStorage();
   }
 
   addTask({ id, value }) {
     this.tasksList.push({ id, value });
-    this.saveTasksToStorage();
+    this.setTasksToStorage();
   }
 
   editTask({ id, value }) {
