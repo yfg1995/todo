@@ -10,6 +10,7 @@ export class Data {
 
   editTask({ id, value }) {
     const taskIndexValue = this.tasksList.findIndex((task) => task.id === id);
+
     if (taskIndexValue !== -1) {
       this.tasksList[taskIndexValue] = { id, value };
       this.saveTasksToStorage();
@@ -31,6 +32,7 @@ export class Data {
 
   getTasksFromStorage() {
     const tasks = localStorage.getItem("tasks");
+
     return tasks ? JSON.parse(tasks) : [];
   }
 }
