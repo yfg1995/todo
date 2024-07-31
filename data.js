@@ -14,7 +14,7 @@ export class Data {
   }
 
   getTasks() {
-    return this.tasksList;
+    return this.tasksList.reverse();
   }
 
   saveToLocalStorage() {
