@@ -13,20 +13,20 @@ export class Data {
 
     if (taskIndexValue !== -1) {
       this.tasksList[taskIndexValue] = { id, value };
-      this.saveTasksToStorage();
+      this.setTasksToStorage();
     }
   }
 
   deleteTask(id) {
     this.tasksList = this.tasksList.filter((task) => task.id !== id);
-    this.saveTasksToStorage();
+    this.setTasksToStorage();
   }
 
   getTasks() {
     return this.tasksList.reverse();
   }
 
-  saveTasksToStorage() {
+  setTasksToStorage() {
     localStorage.setItem("tasks", JSON.stringify(this.tasksList));
   }
 
