@@ -3,8 +3,8 @@ export class Data {
     this.tasksList = this.getTasksFromStorage() || [];
   }
 
-  addTask({ id, inputValue }) {
-    this.tasksList.push({ id, inputValue });
+  addTask({ id, value }) {
+    this.tasksList.push({ id, value });
     this.saveTasksToStorage();
   }
 

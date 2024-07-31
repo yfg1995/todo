@@ -22,7 +22,7 @@ export class Tasks {
     tasks.forEach((task) => {
       new Task({
         wrapSelector: ".list",
-        inputNewValue: task.inputValue,
+        inputNewValue: task.value,
         data: this.data,
         id: task.id,
       });

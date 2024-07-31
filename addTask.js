@@ -18,7 +18,7 @@ export class AddTask {
       if (this.inputNewValue !== "") {
         const taskData = {
           id: Date.now().toString(),
-          inputValue: this.inputNewValue,
+          value: this.inputNewValue,
         };
 
         this.data.addTask(taskData);
