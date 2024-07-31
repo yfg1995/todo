@@ -3,8 +3,8 @@ export class Data {
     this.tasksList = this.getTasksFromLocalStorage() || [];
   }
 
-  addTask({ id, task }) {
-    this.tasksList.push({ id, task });
+  addTask({ id, inputValue }) {
+    this.tasksList.push({ id, inputValue });
     this.saveToLocalStorage();
   }
 

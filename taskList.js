@@ -9,9 +9,20 @@ export class TaskList {
     this.init();
   }
 
-  init() {
-    new AddTask({ wrapSelector: this.wrapSelector, data: this.data });
+  onTaskAdded = () => {
+    this.tasks.renderTasks();
+  };
 
-    new Tasks({ wrapSelector: this.wrapSelector, data: this.data });
+  init() {
+    new AddTask({
+      wrapSelector: this.wrapSelector,
+      data: this.data,
+      onTaskAdded: this.onTaskAdded,
+    });
+
+    this.tasks = new Tasks({
+      wrapSelector: this.wrapSelector,
+      data: this.data,
+    });
   }
 }

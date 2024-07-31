@@ -1,7 +1,8 @@
+import { Data } from "./data";
 import { createHTMLElement } from "./helpers";
 
 export class Task {
-  constructor({ inputNewValue, wrapSelector, data, id }) {
+  constructor({ wrapSelector, inputNewValue, data, id }) {
     this.wrap = document.querySelector(wrapSelector);
     this.inputNewValue = inputNewValue;
     this.data = data;

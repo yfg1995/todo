@@ -1,50 +1,50 @@
 import { createHTMLElement } from "./helpers";
-import { Task } from "./task";
 
 export class AddTask {
-  constructor({ wrapSelector, data }) {
+  constructor({ wrapSelector, data, onTaskAdded }) {
     this.wrap = document.querySelector(wrapSelector);
-    this.wrapSelector = wrapSelector;
     this.data = data;
+    this.onTaskAdded = onTaskAdded;
+    this.inputNewValue = "";
     this.init();
   }
 
-  // handleInputChange(e) {
-  //   this.inputNewValue = e.target.value;
-  // }
+  handleInputChange(e) {
+    this.inputNewValue = e.target.value;
+  }
 
   handleOnAdd() {
     this.button.addEventListener("click", () => {
-      if (this.input.value !== "") {
-        this.id = Date.now().toString();
+      if (this.inputNewValue !== "") {
         const taskData = {
-          id: this.id,
-          inputNewValue: this.input.value,
+          id: Date.now().toString(),
+          inputValue: this.inputNewValue,
         };
 
         this.data.addTask(taskData);
 
-        new Task({
-          inputNewValue: this.input.value,
-          wrapSelector: ".list",
-          data: this.data,
-          id: this.id,
-        });
-
+        this.inputNewValue = "";
         this.input.value = "";
+
+        if (this.onTaskAdded) {
+          this.onTaskAdded(taskData);
+        }
       }
     });
   }
 
   createHTML() {
     this.container = createHTMLElement("div", { className: "add-header" });
-    this.input = createHTMLElement("input", { className: "input" });
+    this.input = createHTMLElement("input", {
+      className: "input",
+      id: "input",
+    });
     this.button = createHTMLElement("button", {
       className: "add-button",
       textContent: "Add to List",
     });
 
-    // this.input.addEventListener("change", (e) => this.handleInputChange(e));
+    this.input.addEventListener("input", (e) => this.handleInputChange(e));
 
     this.container.append(this.input, this.button);
     this.wrap.appendChild(this.container);
