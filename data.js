@@ -1,27 +1,27 @@
 export class Data {
   constructor() {
-    this.tasksList = this.getTasksFromLocalStorage() || [];
+    this.tasksList = this.getTasksFromStorage() || [];
   }
 
   addTask({ id, inputValue }) {
     this.tasksList.push({ id, inputValue });
-    this.saveToLocalStorage();
+    this.saveTasksToStorage();
   }
 
   deleteTask(id) {
     this.tasksList = this.tasksList.filter((task) => task.id !== id);
-    this.saveToLocalStorage();
+    this.saveTasksToStorage();
   }
 
   getTasks() {
     return this.tasksList.reverse();
   }
 
-  saveToLocalStorage() {
+  saveTasksToStorage() {
     localStorage.setItem("tasks", JSON.stringify(this.tasksList));
   }
 
-  getTasksFromLocalStorage() {
+  getTasksFromStorage() {
     const tasks = localStorage.getItem("tasks");
     return tasks ? JSON.parse(tasks) : [];
   }
